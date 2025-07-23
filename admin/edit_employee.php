@@ -13,7 +13,8 @@
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
 
-        $result = mysqli_query($conn, "SELECT * FROM employee WHERE id = $id");
+        $sql = "SELECT * FROM employee WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
         $employee = mysqli_fetch_assoc($result);
 
         if (!$employee) {
@@ -61,7 +62,9 @@
             try {
                 mysqli_query($conn, $sql);
                 $success = true;
-            } catch (mysqli_sql_exception $e) {
+            }
+             
+            catch (mysqli_sql_exception $e) {
                 $error = "Failed to update employee.";
             }
         }

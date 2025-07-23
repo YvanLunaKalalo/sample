@@ -12,9 +12,10 @@
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
 
-        $check = mysqli_query($conn, "SELECT * FROM employee WHERE id = $id");
+        $sql = "SELECT * FROM employee WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
         
-        if (mysqli_num_rows($check) > 0) {
+        if (mysqli_num_rows($result) > 0) {
             $delete = mysqli_query($conn, "DELETE FROM employee WHERE id = $id");
 
             if ($delete) {
